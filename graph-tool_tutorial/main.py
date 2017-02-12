@@ -68,7 +68,7 @@ def use_networkx(torus_path, lattice_path, count):
 
 
 if __name__ == "__main__":
-    # make_dataset(TORUS_PATH, LATTICE_PATH)
+    make_dataset(TORUS_PATH, LATTICE_PATH)
     count = 10
 
     # graph-tool
