@@ -92,3 +92,4 @@ ENV/
 *.pdf
 *.graphml
 *.gz
+.DS_Store
