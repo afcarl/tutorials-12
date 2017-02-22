@@ -15,7 +15,9 @@ LATTICE_PATH = "lattice.graphml"
 
 def make_dataset(torus_path, lattic_path):
     g = graph_tool.generation.lattice([10, 20], periodic=True)
+    # If the following two lines exist, igraph and networkx cannot read .graphml.
     pos = graph_tool.draw.sfdp_layout(g, cooling_step=0.95, epsilon=1e-2)
+    # g.vp["pos"] = pos
     graph_tool.draw.graph_draw(g, pos=pos, output_size=(300, 300), output="lattice_periodict.png")
     g.save(torus_path)
 
