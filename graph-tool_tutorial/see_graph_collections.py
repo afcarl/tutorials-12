@@ -40,7 +40,7 @@ def see_benchmark(name, input_path):
 
 
 if __name__ == "__main__":
-    see_benchmark("mutag", "/Volumes/Untitled/mac/Data/patchy-san/Data/DD.mat")
+    see_benchmark("mutag", "/Volumes/Untitled/mac/Data/patchy-san/pdb2graph/pdb/pdb1hga.ent")
     # see_graph("power", "power.png")
     # see_graph("polbooks", "polbooks.png")
     # see_graph("astro-ph", "astro-ph.png")
