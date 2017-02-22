@@ -18,6 +18,7 @@ namespace
 }
 
 int main(int argc, const char * argv[]) {
+    std::cout << argv[0] << std::endl;
     // insert code here...
     std::cout << MAXN << std::endl;
     
