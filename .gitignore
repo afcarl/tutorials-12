@@ -93,3 +93,6 @@ ENV/
 *.graphml
 *.gz
 .DS_Store
+*.a
+nauty_tutorial/nauty_tutorial.xcworkspace/xcuserdata/
+nauty_tutorial/static_allocation/static_allocation.xcodeproj/xcuserdata/
