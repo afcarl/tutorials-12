@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		881F6A601E5B2400001E13F7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 881F6A5F1E5B2400001E13F7 /* main.cpp */; };
 		A263F06A1E5DBCCB001FC8A9 /* nauty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A263F0691E5DBCCB001FC8A9 /* nauty.a */; };
+		A2AD61311E5E899C00B1C2BC /* examples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2AD61301E5E899C00B1C2BC /* examples.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +27,11 @@
 /* Begin PBXFileReference section */
 		881F6A5C1E5B2400001E13F7 /* static_allocation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = static_allocation; sourceTree = BUILT_PRODUCTS_DIR; };
 		881F6A5F1E5B2400001E13F7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		A23FEB111E5FC45400896A29 /* NautyDynamicAlloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NautyDynamicAlloc.h; sourceTree = "<group>"; };
+		A23FEB131E5FD2AC00896A29 /* NautyDynamicGraphAlloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NautyDynamicGraphAlloc.h; sourceTree = "<group>"; };
 		A263F0691E5DBCCB001FC8A9 /* nauty.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = nauty.a; path = ../../../../../../usr/local/nauty26r7/lib/nauty.a; sourceTree = "<group>"; };
+		A2AD612F1E5E896500B1C2BC /* examples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = examples.h; sourceTree = "<group>"; };
+		A2AD61301E5E899C00B1C2BC /* examples.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = examples.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				881F6A5F1E5B2400001E13F7 /* main.cpp */,
+				A2AD61301E5E899C00B1C2BC /* examples.cpp */,
+				A2AD612F1E5E896500B1C2BC /* examples.h */,
+				A23FEB111E5FC45400896A29 /* NautyDynamicAlloc.h */,
+				A23FEB131E5FD2AC00896A29 /* NautyDynamicGraphAlloc.h */,
 			);
 			path = static_allocation;
 			sourceTree = "<group>";
@@ -131,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2AD61311E5E899C00B1C2BC /* examples.cpp in Sources */,
 				881F6A601E5B2400001E13F7 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +248,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/nauty26r7/include,
 					/opt/local/include,
+					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/nauty26r7/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -253,6 +264,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/nauty26r7/include,
 					/opt/local/include,
+					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/nauty26r7/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
