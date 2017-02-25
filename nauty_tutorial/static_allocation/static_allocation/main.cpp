@@ -12,5 +12,6 @@
 
 int main(int argc, const char * argv[]) {
     example_6();
+    example_7();
     return 0;
 }

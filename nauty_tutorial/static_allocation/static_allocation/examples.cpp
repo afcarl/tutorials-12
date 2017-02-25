@@ -21,6 +21,8 @@
 #include <climits>
 #include "NautyDynamicAlloc.h"
 #include "NautyDynamicGraphAlloc.h"
+#include <boost/range/combine.hpp>
+#include <boost/range/algorithm/for_each.hpp>
 #include <map>
 
 namespace
@@ -645,12 +647,74 @@ void example_5()
      std::cout << std::endl;
 }
 
+std::vector<graph> make_graph_1(int n, int m)
+{
+    // initialize zero
+    std::vector<graph> g(n * m, 0);
+    
+    ADDONEEDGE(g.data(), 7, 4, m);
+    ADDONEEDGE(g.data(), 4, 0, m);
+    ADDONEEDGE(g.data(), 0, 2, m);
+    ADDONEEDGE(g.data(), 2, 7, m);
+    
+    ADDONEEDGE(g.data(), 0, 5, m);
+    ADDONEEDGE(g.data(), 5, 1, m);
+    ADDONEEDGE(g.data(), 1, 2, m);
+    ADDONEEDGE(g.data(), 2, 5, m);
+    ADDONEEDGE(g.data(), 0, 1, m);
+    
+    ADDONEEDGE(g.data(), 5, 3, m);
+    ADDONEEDGE(g.data(), 3, 6, m);
+    ADDONEEDGE(g.data(), 6, 1, m);
+
+    return g;
+}
+
+std::vector<graph> make_graph_2(int n, int m)
+{
+    std::vector<graph> g(n * m, 0);
+    
+    ADDONEEDGE(g.data(), 5, 4, m);
+    ADDONEEDGE(g.data(), 4, 2, m);
+    ADDONEEDGE(g.data(), 2, 3, m);
+    ADDONEEDGE(g.data(), 3, 5, m);
+    
+    ADDONEEDGE(g.data(), 2, 6, m);
+    ADDONEEDGE(g.data(), 6, 1, m);
+    ADDONEEDGE(g.data(), 1, 3, m);
+    ADDONEEDGE(g.data(), 3, 6, m);
+    ADDONEEDGE(g.data(), 1, 2, m);
+    
+    ADDONEEDGE(g.data(), 6, 7, m);
+    ADDONEEDGE(g.data(), 7, 0, m);
+    ADDONEEDGE(g.data(), 0, 1, m);
+
+    return g;
+}
+
+bool is_isomorphic(const std::vector<graph>& cg1, const std::vector<graph>& cg2)
+{
+    auto is_isomorphic = true;
+    for (const auto& p : boost::combine(cg1, cg2))
+    {
+        if (boost::get<0>(p) != boost::get<1>(p))
+        {
+            is_isomorphic = false;
+            break;
+        }
+    }
+    return is_isomorphic;
+}
+
 void example_6()
 {
     DEFAULTOPTIONS_GRAPH(options);
     
-    // The initial colouring of the graph is defined.
+    // A canonical labelling is found.
     options.getcanon = true;
+    
+    // The initial colouring of the graph is defined.
+    options.defaultptn = false;
 
     // the number of vertices
     const auto n = 8;
@@ -661,88 +725,151 @@ void example_6()
     // The following optional call verifies that we are linking to compatible versions of the nauty routines.
     nauty_check(WORDSIZE, m, n, NAUTYVERSIONID);
     
-    std::vector<graph> cg1(n * m);
+    // canonical graph
+    std::vector<graph> cg1(n * m, 0);
     std::vector<int> relabelling1(n);
     {
-        std::vector<graph> g(n * m, 0);
-    
-        ADDONEEDGE(g.data(), 7, 4, m);
-        ADDONEEDGE(g.data(), 4, 0, m);
-        ADDONEEDGE(g.data(), 0, 2, m);
-        ADDONEEDGE(g.data(), 2, 7, m);
-
-        ADDONEEDGE(g.data(), 0, 5, m);
-        ADDONEEDGE(g.data(), 5, 1, m);
-        ADDONEEDGE(g.data(), 1, 2, m);
-        ADDONEEDGE(g.data(), 2, 5, m);
-        ADDONEEDGE(g.data(), 0, 1, m);
-
-        ADDONEEDGE(g.data(), 5, 3, m);
-        ADDONEEDGE(g.data(), 3, 6, m);
-        ADDONEEDGE(g.data(), 6, 1, m);
+        // source graph(input)
+        auto g = make_graph_1(n, m);
         
-        std::vector<graph> cg(n * m, 0);
-        std::vector<int> lab {0, 1, 2, 3, 4, 5, 6, 7};
-        std::vector<int> ptn {1, 1, 1, 1, 1, 1, 1, 0};
+        // partitioning(input)
+        std::vector<int> lab {0, 2, 1, 3, 4, 5, 6, 7};
+        std::vector<int> ptn {1, 0, 1, 1, 1, 1, 1, 0};
+        
+        // (output)
         std::vector<int> orbits(n);
-        
         statsblk stats;
-        densenauty(g.data(), lab.data(), ptn.data(), orbits.data(), &options, &stats, m, n, cg.data());
-        print_result("after  lab: ", lab);
+        
+        // call a Nauty interface
+        densenauty(g.data(), lab.data(), ptn.data(), orbits.data(), &options, &stats, m, n, cg1.data());
+        
+        // check result
+        const auto answer = std::vector<int>{0, 2, 3, 6, 4, 7, 5, 1};
+        cpplinq::from(lab) >>
+            cpplinq::zip_with(cpplinq::from(answer)) >>
+            cpplinq::for_each([](const auto& pair){ assert(pair.first == pair.second); });
 
         cpplinq::range(0, n) >> cpplinq::for_each([&relabelling1, &lab](auto i){ relabelling1[lab[i]] = i; });
-        cg1 = cg;
     }
     
-    std::vector<graph> cg2(n * m);
+    // canonical graph
+    std::vector<graph> cg2(n * m, 0);
     std::vector<int> relabelling2(n);
     {
-        std::vector<graph> g(n * m, 0);
+        // source graph(input)
+        auto g = make_graph_2(n, m);
         
-        ADDONEEDGE(g.data(), 5, 4, m);
-        ADDONEEDGE(g.data(), 4, 2, m);
-        ADDONEEDGE(g.data(), 2, 3, m);
-        ADDONEEDGE(g.data(), 3, 5, m);
+        // partioning(input)
+        std::vector<int> lab {3, 6, 2, 1, 4, 5, 0, 7};
+        std::vector<int> ptn {1, 0, 1, 1, 1, 1, 1, 0};
         
-        ADDONEEDGE(g.data(), 2, 6, m);
-        ADDONEEDGE(g.data(), 6, 1, m);
-        ADDONEEDGE(g.data(), 1, 3, m);
-        ADDONEEDGE(g.data(), 3, 6, m);
-        ADDONEEDGE(g.data(), 1, 2, m);
-        
-        ADDONEEDGE(g.data(), 6, 7, m);
-        ADDONEEDGE(g.data(), 7, 0, m);
-        ADDONEEDGE(g.data(), 0, 1, m);
-        
-        
-        std::vector<graph> cg(n * m, 0);
-        std::vector<int> lab {0, 1, 2, 3, 4, 5, 6, 7};
-        std::vector<int> ptn {1, 1, 1, 1, 1, 1, 1, 0};
+        // (output)
         std::vector<int> orbits(n);
-        
         statsblk stats;
-        densenauty(g.data(), lab.data(), ptn.data(), orbits.data(), &options, &stats, m, n, cg.data());
-        print_result("after  lab: ", lab);
         
-        cpplinq::range(0, n) >> cpplinq::for_each([&relabelling2, &lab](auto i){ relabelling2[lab[i]] = i; });
-        cg2 = cg;
-    }
-    
-    auto is_isomorphic = true;
-    for (auto k = 0; k < m * n; ++k )
-    {
-        if (cg1[k] != cg2[k])
-        {
-            is_isomorphic = false;
-            break;
-        }
-    }
-    
-    if (is_isomorphic)
-    {
-        std::cout << "isomorphic!\n";
-    }
+        // call a Nauty interface
+        densenauty(g.data(), lab.data(), ptn.data(), orbits.data(), &options, &stats, m, n, cg2.data());
 
-    print_result("relabelling1: ", relabelling1);
-    print_result("relabelling2: ", relabelling2);
+        // check result
+        const std::vector<int> answer {3, 6, 0, 4, 7, 5, 1, 2};
+        cpplinq::from(lab) >>
+            cpplinq::zip_with(cpplinq::from(answer)) >>
+            cpplinq::for_each([](const auto& pair){ assert(pair.first == pair.second); });
+        
+        cpplinq::range(0, n) >>
+            cpplinq::for_each([&relabelling2, &lab](auto i){ relabelling2[lab[i]] = i; });
+    }
+    
+    // judge whether two graph are isomorphic or not
+    assert(!is_isomorphic(cg1, cg2));
+
+    const std::vector<int> answers1 {0, 7, 1, 2, 4, 6, 3, 5};
+    const std::vector<int> answers2 {2, 6, 7, 0, 3, 5, 1, 4};
+    cpplinq::from(relabelling1) >>
+        cpplinq::zip_with(cpplinq::from(answers1)) >>
+        cpplinq::for_each([](const auto& pair){ assert(pair.first == pair.second); });
+    
+    cpplinq::from(relabelling2) >>
+        cpplinq::zip_with(cpplinq::from(answers2)) >>
+        cpplinq::for_each([](const auto& pair){ assert(pair.first == pair.second); });
+}
+
+void example_7()
+{
+    DEFAULTOPTIONS_GRAPH(options);
+    
+    // A canonical labelling is found.
+    options.getcanon = true;
+    
+    // the number of vertices
+    const auto n = 8;
+    
+    // m is a value such that an array of m setwords is sufficient to hold n bits.
+    const auto m = SETWORDSNEEDED(n);
+    
+    // The following optional call verifies that we are linking to compatible versions of the nauty routines.
+    nauty_check(WORDSIZE, m, n, NAUTYVERSIONID);
+    
+    std::vector<graph> cg1(n * m, 0);
+    std::vector<int> relabelling1(n);
+    {
+        // source graph(input)
+        auto g = make_graph_1(n, m);
+        
+        // (output)
+        std::vector<int> lab(n);
+        std::vector<int> ptn(n);
+        std::vector<int> orbits(n);
+        statsblk stats;
+        
+        // call a Nauty interface
+        densenauty(g.data(), lab.data(), ptn.data(), orbits.data(), &options, &stats, m, n, cg1.data());
+        
+        // check result
+        const auto answer = std::vector<int>{3, 6, 4, 7, 5, 1, 0, 2};
+        cpplinq::from(lab) >>
+            cpplinq::zip_with(cpplinq::from(answer)) >>
+            cpplinq::for_each([](const auto& pair){ assert(pair.first == pair.second); });
+        
+        cpplinq::range(0, n) >>
+            cpplinq::for_each([&relabelling1, &lab](auto i){ relabelling1[lab[i]] = i; });
+    }
+    
+    std::vector<graph> cg2(n * m, 0);
+    std::vector<int> relabelling2(n);
+    {
+        // source graph(input)
+        std::vector<graph> g = make_graph_2(n, m);
+        
+        // (output)
+        std::vector<int> lab(n);
+        std::vector<int> ptn(n);
+        std::vector<int> orbits(n);
+        statsblk stats;
+        
+        //call a Nauty interface
+        densenauty(g.data(), lab.data(), ptn.data(), orbits.data(), &options, &stats, m, n, cg2.data());
+        
+        // check result
+        const auto answer = std::vector<int>{0, 7, 4, 5, 1, 6, 2, 3};
+        cpplinq::from(lab) >>
+            cpplinq::zip_with(cpplinq::from(answer)) >>
+            cpplinq::for_each([](const auto& pair){ assert(pair.first == pair.second); });
+        
+        cpplinq::range(0, n) >>
+            cpplinq::for_each([&relabelling2, &lab](auto i){ relabelling2[lab[i]] = i; });
+    }
+    
+    // judge whether two graph are isomorphic or not
+    assert(is_isomorphic(cg1, cg2));
+
+    const auto answers1 = std::vector<int>{6, 5, 7, 0, 2, 4, 1, 3};
+    const auto answers2 = std::vector<int>{0, 4, 6, 7, 2, 3, 5, 1};
+    cpplinq::from(relabelling1) >>
+        cpplinq::zip_with(cpplinq::from(answers1)) >>
+        cpplinq::for_each([](const auto& pair){ assert(pair.first == pair.second); });
+    
+    cpplinq::from(relabelling2) >>
+        cpplinq::zip_with(cpplinq::from(answers2)) >>
+        cpplinq::for_each([](const auto& pair){ assert(pair.first == pair.second); });
 }
