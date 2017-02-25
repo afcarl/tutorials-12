@@ -11,6 +11,6 @@
 #include "examples.h"
 
 int main(int argc, const char * argv[]) {
-    example_5();
+    example_6();
     return 0;
 }

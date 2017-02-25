@@ -186,21 +186,40 @@ void example_1()
     const auto m = SETWORDSNEEDED(n);
     
     EMPTYGRAPH(g, m, n);
-    
-    ADDONEEDGE(g, 0, 1, m);
-    ADDONEEDGE(g, 1, 3, m);
-    ADDONEEDGE(g, 3, 2, m);
-    ADDONEEDGE(g, 2, 0, m);
-    
-    ADDONEEDGE(g, 2, 4, m);
-    ADDONEEDGE(g, 3, 5, m);
-    ADDONEEDGE(g, 2, 5, m);
-    ADDONEEDGE(g, 3, 4, m);
-    
-    ADDONEEDGE(g, 4, 6, m);
-    ADDONEEDGE(g, 6, 7, m);
-    ADDONEEDGE(g, 7, 5, m);
-    ADDONEEDGE(g, 5, 4, m);
+    {
+//        ADDONEEDGE(g, 0, 1, m);
+//        ADDONEEDGE(g, 1, 3, m);
+//        ADDONEEDGE(g, 3, 2, m);
+//        ADDONEEDGE(g, 2, 0, m);
+//        
+//        ADDONEEDGE(g, 2, 4, m);
+//        ADDONEEDGE(g, 3, 5, m);
+//        ADDONEEDGE(g, 2, 5, m);
+//        ADDONEEDGE(g, 3, 4, m);
+//        
+//        ADDONEEDGE(g, 4, 6, m);
+//        ADDONEEDGE(g, 6, 7, m);
+//        ADDONEEDGE(g, 7, 5, m);
+//        ADDONEEDGE(g, 5, 4, m);
+    }
+
+    {
+        ADDONEEDGE(g, 2, 4, m);
+        ADDONEEDGE(g, 3, 5, m);
+        ADDONEEDGE(g, 2, 5, m);
+        ADDONEEDGE(g, 3, 4, m);
+
+        ADDONEEDGE(g, 0, 1, m);
+        ADDONEEDGE(g, 3, 1, m);
+        ADDONEEDGE(g, 3, 2, m);
+        ADDONEEDGE(g, 2, 0, m);
+
+        ADDONEEDGE(g, 4, 6, m);
+        ADDONEEDGE(g, 6, 7, m);
+        ADDONEEDGE(g, 7, 5, m);
+        ADDONEEDGE(g, 5, 4, m);
+        
+    }
     
     int lab[MAXN];
     int ptr[MAXN];
@@ -597,7 +616,6 @@ void example_5()
     std::vector<int> ptn1 = {1, 1, 1, 0, 0, 0, 0, 0, 0, 0};
     std::vector<int> orbits1(n);
     
-    
     // m is a value such that an array of m setwords is sufficient to hold n bits.
     const auto m = SETWORDSNEEDED(n);
     
@@ -625,4 +643,106 @@ void example_5()
     
      writegroupsize(stdout, stats.grpsize1, stats.grpsize2);
      std::cout << std::endl;
+}
+
+void example_6()
+{
+    DEFAULTOPTIONS_GRAPH(options);
+    
+    // The initial colouring of the graph is defined.
+    options.getcanon = true;
+
+    // the number of vertices
+    const auto n = 8;
+    
+    // m is a value such that an array of m setwords is sufficient to hold n bits.
+    const auto m = SETWORDSNEEDED(n);
+  
+    // The following optional call verifies that we are linking to compatible versions of the nauty routines.
+    nauty_check(WORDSIZE, m, n, NAUTYVERSIONID);
+    
+    std::vector<graph> cg1(n * m);
+    std::vector<int> relabelling1(n);
+    {
+        std::vector<graph> g(n * m, 0);
+    
+        ADDONEEDGE(g.data(), 7, 4, m);
+        ADDONEEDGE(g.data(), 4, 0, m);
+        ADDONEEDGE(g.data(), 0, 2, m);
+        ADDONEEDGE(g.data(), 2, 7, m);
+
+        ADDONEEDGE(g.data(), 0, 5, m);
+        ADDONEEDGE(g.data(), 5, 1, m);
+        ADDONEEDGE(g.data(), 1, 2, m);
+        ADDONEEDGE(g.data(), 2, 5, m);
+        ADDONEEDGE(g.data(), 0, 1, m);
+
+        ADDONEEDGE(g.data(), 5, 3, m);
+        ADDONEEDGE(g.data(), 3, 6, m);
+        ADDONEEDGE(g.data(), 6, 1, m);
+        
+        std::vector<graph> cg(n * m, 0);
+        std::vector<int> lab {0, 1, 2, 3, 4, 5, 6, 7};
+        std::vector<int> ptn {1, 1, 1, 1, 1, 1, 1, 0};
+        std::vector<int> orbits(n);
+        
+        statsblk stats;
+        densenauty(g.data(), lab.data(), ptn.data(), orbits.data(), &options, &stats, m, n, cg.data());
+        print_result("after  lab: ", lab);
+
+        cpplinq::range(0, n) >> cpplinq::for_each([&relabelling1, &lab](auto i){ relabelling1[lab[i]] = i; });
+        cg1 = cg;
+    }
+    
+    std::vector<graph> cg2(n * m);
+    std::vector<int> relabelling2(n);
+    {
+        std::vector<graph> g(n * m, 0);
+        
+        ADDONEEDGE(g.data(), 5, 4, m);
+        ADDONEEDGE(g.data(), 4, 2, m);
+        ADDONEEDGE(g.data(), 2, 3, m);
+        ADDONEEDGE(g.data(), 3, 5, m);
+        
+        ADDONEEDGE(g.data(), 2, 6, m);
+        ADDONEEDGE(g.data(), 6, 1, m);
+        ADDONEEDGE(g.data(), 1, 3, m);
+        ADDONEEDGE(g.data(), 3, 6, m);
+        ADDONEEDGE(g.data(), 1, 2, m);
+        
+        ADDONEEDGE(g.data(), 6, 7, m);
+        ADDONEEDGE(g.data(), 7, 0, m);
+        ADDONEEDGE(g.data(), 0, 1, m);
+        
+        
+        std::vector<graph> cg(n * m, 0);
+        std::vector<int> lab {0, 1, 2, 3, 4, 5, 6, 7};
+        std::vector<int> ptn {1, 1, 1, 1, 1, 1, 1, 0};
+        std::vector<int> orbits(n);
+        
+        statsblk stats;
+        densenauty(g.data(), lab.data(), ptn.data(), orbits.data(), &options, &stats, m, n, cg.data());
+        print_result("after  lab: ", lab);
+        
+        cpplinq::range(0, n) >> cpplinq::for_each([&relabelling2, &lab](auto i){ relabelling2[lab[i]] = i; });
+        cg2 = cg;
+    }
+    
+    auto is_isomorphic = true;
+    for (auto k = 0; k < m * n; ++k )
+    {
+        if (cg1[k] != cg2[k])
+        {
+            is_isomorphic = false;
+            break;
+        }
+    }
+    
+    if (is_isomorphic)
+    {
+        std::cout << "isomorphic!\n";
+    }
+
+    print_result("relabelling1: ", relabelling1);
+    print_result("relabelling2: ", relabelling2);
 }

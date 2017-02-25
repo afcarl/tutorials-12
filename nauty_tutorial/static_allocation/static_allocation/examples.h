@@ -15,5 +15,6 @@ void example_2();
 void example_3();
 void example_4();
 void example_5();
+void example_6();
 
 #endif // EXAMPLES_H
