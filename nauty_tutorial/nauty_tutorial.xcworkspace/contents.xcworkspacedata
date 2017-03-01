@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:boost_python_lib/boost_python_lib.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:boost_python/boost_python.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:static_allocation/static_allocation.xcodeproj">
    </FileRef>
 </Workspace>

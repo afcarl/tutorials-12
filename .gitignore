@@ -97,3 +97,8 @@ ENV/
 nauty_tutorial/nauty_tutorial.xcworkspace/xcuserdata/
 nauty_tutorial/static_allocation/static_allocation.xcodeproj/xcuserdata/
 nauty_tutorial/exe/
+
+nauty_tutorial/boost_python/boost_python.xcodeproj/xcuserdata/*
+nauty_tutorial/boost_python_lib/boost_python_lib.xcodeproj/xcuserdata/*
+nauty_tutorial/boost_python_lib/boost_python_lib/*.o
+
