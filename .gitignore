@@ -102,3 +102,8 @@ nauty_tutorial/boost_python/boost_python.xcodeproj/xcuserdata/*
 nauty_tutorial/boost_python_lib/boost_python_lib.xcodeproj/xcuserdata/*
 nauty_tutorial/boost_python_lib/boost_python_lib/*.o
 
+boost_python/class/class.xcodeproj/xcuserdata/
+boost_python/class2/class2.xcodeproj/xcuserdata/
+boost_python/greet/greet.xcodeproj/xcuserdata/
+*.o
+boost_python/DerivedData/*

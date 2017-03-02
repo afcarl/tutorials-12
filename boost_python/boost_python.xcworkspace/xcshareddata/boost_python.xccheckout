@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2F37222A-03E9-4728-B2D1-1207F3F1D628</string>
+	<key>IDESourceControlProjectName</key>
+	<string>boost_python</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F864BC4E50516DCA25D7FB98DEC9E00426355C5C</key>
+		<string>https://github.com/seiya-kumada/tutorials.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>boost_python/boost_python.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F864BC4E50516DCA25D7FB98DEC9E00426355C5C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/seiya-kumada/tutorials.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F864BC4E50516DCA25D7FB98DEC9E00426355C5C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F864BC4E50516DCA25D7FB98DEC9E00426355C5C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tutorials</string>
+		</dict>
+	</array>
+</dict>
+</plist>
