@@ -17,7 +17,7 @@ const char* greet()
     return "hello, world";
 }
 
-BOOST_PYTHON_MODULE(hello_ext)
+BOOST_PYTHON_MODULE(libgreet)
 {
     using namespace boost::python;
     def("greet", greet);

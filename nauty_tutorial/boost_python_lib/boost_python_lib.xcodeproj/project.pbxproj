@@ -12,7 +12,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		883842361E6703C400C0F6AA /* libboost_python_lib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libboost_python_lib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		883842361E6703C400C0F6AA /* libgreet.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libgreet.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8838423B1E6703C400C0F6AA /* greet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = greet.hpp; sourceTree = "<group>"; };
 		8838423D1E6703C400C0F6AA /* greet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = greet.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,7 +39,7 @@
 		883842371E6703C400C0F6AA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				883842361E6703C400C0F6AA /* libboost_python_lib.dylib */,
+				883842361E6703C400C0F6AA /* libgreet.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,7 +81,7 @@
 			);
 			name = boost_python_lib;
 			productName = boost_python_lib;
-			productReference = 883842361E6703C400C0F6AA /* libboost_python_lib.dylib */;
+			productReference = 883842361E6703C400C0F6AA /* libgreet.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -234,8 +234,12 @@
 					/opt/local/lib,
 					/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/,
 				);
-				OTHER_LDFLAGS = "-lboost_python-mt";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = (
+					"-lboost_python-mt",
+					"-lpython",
+				);
+				PRODUCT_MODULE_NAME = greet;
+				PRODUCT_NAME = greet;
 			};
 			name = Debug;
 		};
@@ -258,8 +262,12 @@
 					/opt/local/lib,
 					/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/,
 				);
-				OTHER_LDFLAGS = "-lboost_python-mt";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				OTHER_LDFLAGS = (
+					"-lboost_python-mt",
+					"-lpython",
+				);
+				PRODUCT_MODULE_NAME = greet;
+				PRODUCT_NAME = greet;
 			};
 			name = Release;
 		};
@@ -282,6 +290,7 @@
 				883842431E6703C400C0F6AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

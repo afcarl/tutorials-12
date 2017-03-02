@@ -12,4 +12,4 @@ greet.o: greet.cpp
 	$(CC) -Wall -O2 -fPIC -c $< -I$(INCLUDE_PATH_1) -I$(INCLUDE_PATH_2) -L$(LIB_PATH_1) -L$(LIB_PATH_2)
 
 greet.so: greet.o
-	$(CC) -shared  -o $@ -I$(INCLUDE_PATH_1) $< -I$(INCLUDE_PATH_2) -L$(LIB_PATH_1) -L$(LIB_PATH_2) -lboost_python-mt -lpython2.7 -F$(FRAMEWORK_PATH) -framework Python
+	$(CC) -shared -o $@ $< -I$(INCLUDE_PATH_1) -I$(INCLUDE_PATH_2) -L$(LIB_PATH_1) -L$(LIB_PATH_2) -lboost_python-mt -lpython2.7 #  -F$(FRAMEWORK_PATH) -framework Python
