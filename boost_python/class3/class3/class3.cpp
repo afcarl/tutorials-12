@@ -1,5 +1,6 @@
-#include "class2.h"
+#include "class3.h"
 #include <boost/python.hpp>
+#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
 
 const foo::int_vector& foo::get_list() const {
     return v_;
@@ -9,7 +10,7 @@ void foo::add(int v) {
     v_.push_back(v);
 }
 
-BOOST_PYTHON_MODULE(libclass2)
+BOOST_PYTHON_MODULE(libclass3)
 {
     using namespace boost::python;
 
@@ -25,26 +26,7 @@ BOOST_PYTHON_MODULE(libclass2)
     ;
     
     // 返り値 foo::int_vectorをラップする。
-    using at_type = int const& (foo::int_vector::*)(foo::int_vector::size_type) const;
     class_<foo::int_vector>("int_vector")
-        .def(
-            // 要素の取り出し
-            "__getitem__",
-            
-            static_cast<at_type>(&foo::int_vector::at),
-            
-            // 返り値のポリシー（const参照値をコピーして返す。つまり値にして返す）
-            return_value_policy<copy_const_reference>()
-        )
-
-    
-        .def(
-            // 長さ
-            "__len__",
-            &foo::int_vector::size
-        )
+        .def(vector_indexing_suite<foo::int_vector>())
     ;
-
 }
-
-

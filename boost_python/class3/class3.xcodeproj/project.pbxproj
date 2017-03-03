@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A21805E81E67FB8A000BD8D9 /* class2.h in Headers */ = {isa = PBXBuildFile; fileRef = A21805E71E67FB8A000BD8D9 /* class2.h */; };
-		A21805EC1E67FB8A000BD8D9 /* class2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A21805EB1E67FB8A000BD8D9 /* class2.cpp */; };
+		A29CCB091E6900C100974EE8 /* class3.h in Headers */ = {isa = PBXBuildFile; fileRef = A29CCB081E6900C100974EE8 /* class3.h */; };
+		A29CCB0D1E6900C100974EE8 /* class3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A29CCB0C1E6900C100974EE8 /* class3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A21805E41E67FB8A000BD8D9 /* libclass2.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclass2.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		A21805E71E67FB8A000BD8D9 /* class2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = class2.h; sourceTree = "<group>"; };
-		A21805EB1E67FB8A000BD8D9 /* class2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = class2.cpp; sourceTree = "<group>"; };
+		A29CCB051E6900C100974EE8 /* libclass3.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libclass3.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		A29CCB081E6900C100974EE8 /* class3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = class3.h; sourceTree = "<group>"; };
+		A29CCB0C1E6900C100974EE8 /* class3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = class3.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A21805E11E67FB8A000BD8D9 /* Frameworks */ = {
+		A29CCB021E6900C100974EE8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -28,96 +28,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A21805DB1E67FB8A000BD8D9 = {
+		A29CCAFC1E6900C100974EE8 = {
 			isa = PBXGroup;
 			children = (
-				A21805E61E67FB8A000BD8D9 /* class2 */,
-				A21805E51E67FB8A000BD8D9 /* Products */,
+				A29CCB071E6900C100974EE8 /* class3 */,
+				A29CCB061E6900C100974EE8 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A21805E51E67FB8A000BD8D9 /* Products */ = {
+		A29CCB061E6900C100974EE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A21805E41E67FB8A000BD8D9 /* libclass2.dylib */,
+				A29CCB051E6900C100974EE8 /* libclass3.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A21805E61E67FB8A000BD8D9 /* class2 */ = {
+		A29CCB071E6900C100974EE8 /* class3 */ = {
 			isa = PBXGroup;
 			children = (
-				A21805E71E67FB8A000BD8D9 /* class2.h */,
-				A21805EB1E67FB8A000BD8D9 /* class2.cpp */,
+				A29CCB081E6900C100974EE8 /* class3.h */,
+				A29CCB0C1E6900C100974EE8 /* class3.cpp */,
 			);
-			path = class2;
+			path = class3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A21805E21E67FB8A000BD8D9 /* Headers */ = {
+		A29CCB031E6900C100974EE8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A21805E81E67FB8A000BD8D9 /* class2.h in Headers */,
+				A29CCB091E6900C100974EE8 /* class3.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A21805E31E67FB8A000BD8D9 /* class2 */ = {
+		A29CCB041E6900C100974EE8 /* class3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A21805EF1E67FB8A000BD8D9 /* Build configuration list for PBXNativeTarget "class2" */;
+			buildConfigurationList = A29CCB101E6900C100974EE8 /* Build configuration list for PBXNativeTarget "class3" */;
 			buildPhases = (
-				A21805E01E67FB8A000BD8D9 /* Sources */,
-				A21805E11E67FB8A000BD8D9 /* Frameworks */,
-				A21805E21E67FB8A000BD8D9 /* Headers */,
-				A29CCAFB1E68F35F00974EE8 /* ShellScript */,
+				A29CCB011E6900C100974EE8 /* Sources */,
+				A29CCB021E6900C100974EE8 /* Frameworks */,
+				A29CCB031E6900C100974EE8 /* Headers */,
+				A29CCB131E69023E00974EE8 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = class2;
-			productName = class2;
-			productReference = A21805E41E67FB8A000BD8D9 /* libclass2.dylib */;
+			name = class3;
+			productName = class3;
+			productReference = A29CCB051E6900C100974EE8 /* libclass3.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A21805DC1E67FB8A000BD8D9 /* Project object */ = {
+		A29CCAFD1E6900C100974EE8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = kumada;
 				TargetAttributes = {
-					A21805E31E67FB8A000BD8D9 = {
+					A29CCB041E6900C100974EE8 = {
 						CreatedOnToolsVersion = 6.2;
 					};
 				};
 			};
-			buildConfigurationList = A21805DF1E67FB8A000BD8D9 /* Build configuration list for PBXProject "class2" */;
+			buildConfigurationList = A29CCB001E6900C100974EE8 /* Build configuration list for PBXProject "class3" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = A21805DB1E67FB8A000BD8D9;
-			productRefGroup = A21805E51E67FB8A000BD8D9 /* Products */;
+			mainGroup = A29CCAFC1E6900C100974EE8;
+			productRefGroup = A29CCB061E6900C100974EE8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A21805E31E67FB8A000BD8D9 /* class2 */,
+				A29CCB041E6900C100974EE8 /* class3 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A29CCAFB1E68F35F00974EE8 /* ShellScript */ = {
+		A29CCB131E69023E00974EE8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -128,27 +128,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mv \\\n        /Users/seiya_kumada/Projects/tutorials/boost_python/DerivedData/boost_python/Build/Products/Debug/libclass2.dylib \\\n        /Users/seiya_kumada/Projects/tutorials/boost_python/DerivedData/boost_python/Build/Products/Debug/libclass2.so";
+			shellScript = "mv \\\n        /Users/seiya_kumada/Projects/tutorials/boost_python/DerivedData/boost_python/Build/Products/Debug/libclass3.dylib \\\n        /Users/seiya_kumada/Projects/tutorials/boost_python/DerivedData/boost_python/Build/Products/Debug/libclass3.so";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A21805E01E67FB8A000BD8D9 /* Sources */ = {
+		A29CCB011E6900C100974EE8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A21805EC1E67FB8A000BD8D9 /* class2.cpp in Sources */,
+				A29CCB0D1E6900C100974EE8 /* class3.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A21805ED1E67FB8A000BD8D9 /* Debug */ = {
+		A29CCB0E1E6900C100974EE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -184,11 +184,11 @@
 			};
 			name = Debug;
 		};
-		A21805EE1E67FB8A000BD8D9 /* Release */ = {
+		A29CCB0F1E6900C100974EE8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -218,10 +218,9 @@
 			};
 			name = Release;
 		};
-		A21805F01E67FB8A000BD8D9 /* Debug */ = {
+		A29CCB111E6900C100974EE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
@@ -246,10 +245,9 @@
 			};
 			name = Debug;
 		};
-		A21805F11E67FB8A000BD8D9 /* Release */ = {
+		A29CCB121E6900C100974EE8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
@@ -277,25 +275,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A21805DF1E67FB8A000BD8D9 /* Build configuration list for PBXProject "class2" */ = {
+		A29CCB001E6900C100974EE8 /* Build configuration list for PBXProject "class3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A21805ED1E67FB8A000BD8D9 /* Debug */,
-				A21805EE1E67FB8A000BD8D9 /* Release */,
+				A29CCB0E1E6900C100974EE8 /* Debug */,
+				A29CCB0F1E6900C100974EE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A21805EF1E67FB8A000BD8D9 /* Build configuration list for PBXNativeTarget "class2" */ = {
+		A29CCB101E6900C100974EE8 /* Build configuration list for PBXNativeTarget "class3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A21805F01E67FB8A000BD8D9 /* Debug */,
-				A21805F11E67FB8A000BD8D9 /* Release */,
+				A29CCB111E6900C100974EE8 /* Debug */,
+				A29CCB121E6900C100974EE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A21805DC1E67FB8A000BD8D9 /* Project object */;
+	rootObject = A29CCAFD1E6900C100974EE8 /* Project object */;
 }
