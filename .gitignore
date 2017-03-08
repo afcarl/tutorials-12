@@ -108,3 +108,5 @@ boost_python/greet/greet.xcodeproj/xcuserdata/
 *.o
 boost_python/DerivedData/*
 boost_python/class3/class3.xcodeproj/xcuserdata/
+boost_python/boost_python.xcworkspace/xcuserdata/
+boost_python/class4/class4.xcodeproj/xcuserdata/kumada.xcuserdatad/
